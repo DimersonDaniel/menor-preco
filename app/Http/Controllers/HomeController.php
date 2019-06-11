@@ -118,6 +118,7 @@ class HomeController extends Controller
     public function consultaRapida(Request $request)
     {
         //AMBIENTE DE TESTE
+        //NEW COMMIT
         //return (new QuerySefaz())->queryProduto($request->search,1);
 
        return (new BuscarProduto())->init($request->search);
