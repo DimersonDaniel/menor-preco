@@ -10,6 +10,8 @@ use DOMXPath;
 class QuerySefaz
 {
 
+    public $totalPages = 1;
+
     public function execute($codigoProduto){
 
         for ($page = 1; $page <= 10; $page++) {
@@ -39,7 +41,7 @@ class QuerySefaz
         $header = substr($output, 0, $header_size);
         curl_close($ch);
 
-       //$pages = $this->getPages($output);
+       $this->getPages($output);
 
        // return$this->ultimaCompra($output);
 
@@ -83,11 +85,9 @@ class QuerySefaz
         $html_dom = new DOMDocument();
         @$html_dom->loadHTML($content);
         $divs = $html_dom->getElementsByTagName('ul');
-        $data = [];
-        $count = 0;
+
         foreach ( $divs as $key => $div) {
             $attr = $div->getAttribute('class');
-
             if ($attr == 'pagination') {
                 foreach (preg_split("/((\r?\n)|(\r\n?))/", $div->textContent) as $line) {
                     if (trim($line) == "") {
@@ -100,15 +100,11 @@ class QuerySefaz
                     if(trim($line) == "fast_forward"){
                         continue;
                     }
-                    $data[$count][] = trim($line);
+                    $this->totalPages = trim($line);
 
                 }
-                
-                $count++;
             }
         }
-       return $data;
-
     }
 
     private function generateKey($length) {

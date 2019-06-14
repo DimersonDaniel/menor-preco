@@ -34,6 +34,12 @@ class CreateUsersTable extends Migration
            ],
            [
                'id' => 2,
+               'name' => 'COMERCIAL',
+               'email' => 'comercial@comercial.com',
+               'password' => bcrypt(123456)
+           ],
+           [
+               'id' => 3,
                'name' => 'DIMERSON DANIEL',
                'email' => 'dimerson.daniel@gmail.com',
                'password' => bcrypt(167167)

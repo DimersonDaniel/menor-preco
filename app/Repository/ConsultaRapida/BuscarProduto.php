@@ -9,14 +9,23 @@ use App\Repository\QuerySefaz;
 class BuscarProduto
 {
     private $header;
-    private $rows;
+    private $data;
 
     private $blackList;
 
     public function init($codigo_barra)
     {
-        $this->rows = (new QuerySefaz())->queryProduto($codigo_barra,1);
-        $row =   $this->monthedArray();
+        $totalPages = 1;
+
+        $query = new QuerySefaz();
+        $this->data[]   = $query->queryProduto($codigo_barra,$totalPages);
+        $totalPages     = $query->totalPages;
+
+        for ($page = 2; $page <= $totalPages; $page++)
+        {
+            $this->data[] = $query->queryProduto($codigo_barra,$page);
+            $row = $this->monthedArray();
+        }
 
         return ['headers' => $this->header, 'rows' => [collect($row)] ];
     }
@@ -29,39 +38,48 @@ class BuscarProduto
             ['text' => 'COD. BARRAS',   'value' => 'COD_BARRAS' ],
             ['text' => 'PRODUTO',       'value' => 'PRODUTO'    ]
         ];
+
         $this->blackList = [];
-        foreach ($this->rows as $key => $row){
 
-            if(in_array( $row[0], $this->blackList)){
-                continue;
-            }
+        foreach ($this->data as $key => $rows){
 
-            $this->header[]     = ['text' => $row[0], 'value' => $row[0]];
-            $this->blackList[]  = $row[0];
+            foreach ( $rows as $row){
 
-            $valor = 0;
+                if(in_array( $row[0], $this->blackList)){
+                    continue;
+                }
 
-            if($row[2]){
-                $valor = str_replace('R$ ','',$row[2]);
-                $valor = str_replace(',','.',$valor);
-            }
+                $this->header[]     = ['text' => $row[0], 'value' => $row[0]];
+                $this->blackList[]  = $row[0];
 
-            $valores[] = ['valor' => $valor, 'endereco' => $row[1]] ;
+                $valor = 0;
 
-            $data = [
+                if($row[2]){
+                    $valor = str_replace('R$ ','',$row[2]);
+                    $valor = str_replace(',','.',$valor);
+                }
+
+                $valores[] = ['valor' => $valor, 'endereco' => $row[1]] ;
+
+                $data = [
                     'codigo_barra'  =>  $row[4],
                     'name'          =>  $row[3],
                     'valores'       =>  $this->valoresWithEndereco($valores),
                 ];
+
+            }
+
         }
 
         return $data;
     }
 
     private function valoresWithEndereco($valores){
+
         $newValores     = [];
         $colorGreen     = '#29df00';
         $colorRed       = '#ec503e';
+
         foreach ($valores as $valor){
 
             $minValue = min($valores);

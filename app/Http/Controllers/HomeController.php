@@ -42,8 +42,6 @@ class HomeController extends Controller
         $path           = $fileRequest->store('filesForProcess');
 
         Artisan::call('consulta:preco', ['path' => $path]);
-
-        return 'sucesso!';
     }
 
     public function download(Request $request)

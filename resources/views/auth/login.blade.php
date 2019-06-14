@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center" style="margin-top: 50px">
+    <div class="row justify-content-center" style="margin-top: 50px;">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Menor preço') }}</div>
@@ -10,9 +10,9 @@
                 <div class="card-body">
 
                    <div class="form-group row">
-                       <div class="col-md-4"></div>
-                       <div class="col-md-6">
-                           <img src="/imagens/supermercados.jpg" class="img-fluid" width="330px" alt="">
+                       <div class="col-md-5"></div>
+                       <div class="col-md-4">
+                           <img src="/imagens/supermercados.jpg" class="img-fluid"  alt="">
                        </div>
                     </div>
 
