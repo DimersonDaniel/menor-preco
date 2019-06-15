@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\Consultas;
+use App\Exports\ConsultasCSV;
 use App\Exports\PlanilhaExemplo;
-use App\Models\StoreEndereco;
+use App\Helpers\StatusResponse;
+use App\Http\Requests\Filtros;
+use App\Http\Requests\Importacao;
+use App\Jobs\ImportacaoProcess;
+use App\Models\StoreFile;
+use App\Models\StoreFilters;
 use App\Models\StoreProducts;
 use App\Repository\ConsultaRapida\BuscarProduto;
 use App\Repository\ListarProdutos\ProdutosManagerFilters;
-use App\Repository\QuerySefaz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
@@ -36,12 +40,25 @@ class HomeController extends Controller
         return view('app');
     }
 
-    public function importar(Request $request)
+    public function importar(Importacao $request)
     {
+        $filters = StoreFilters::all();
+
+        if ($filters->isEmpty()) {
+           return StatusResponse::errors(
+             '422',
+             'Error',
+             'É necessario adicionar filtros de pesquisa!'
+           );
+        }
+
         $fileRequest    = $request->file('fileUpload');
         $path           = $fileRequest->store('filesForProcess');
 
-        Artisan::call('consulta:preco', ['path' => $path]);
+        ImportacaoProcess::dispatch($path);
+
+        return 'sucesso';
+
     }
 
     public function download(Request $request)
@@ -49,76 +66,63 @@ class HomeController extends Controller
        return Excel::download(new PlanilhaExemplo(), 'planilhaModelo.xlsx');
     }
 
-    public function downloadConsultas(Request $request)
+    public function downloads()
     {
-        return Excel::download(new Consultas(), 'consultas.xlsx');
+        $data = StoreFile::select(
+            [
+                'id',
+                'file_name',
+                'descricao',
+                'created_at'
+            ])->orderBy('id', 'desc')
+            ->get();
+
+        return $data;
     }
 
-    public function configuracao(Request $request){
-        $config             = new StoreEndereco();
-        $config->id_user    = Auth::user()->id;
-        $config->local      = $request->local;
-        $config->apelido    = $request->apelido;
+    public function gerarDwonload(Request $request)
+    {
+        (new ConsultasCSV())->init();
+    }
+
+    public function downloadConsultas(Request $request){
+        $path = StoreFile::find($request->idFile);
+        return Storage::download($path->file_path);
+    }
+
+    public function filtros(Filtros $request){
+        $config          = new StoreFilters();
+        $config->name    = strtoupper($request->name);
         $config->save();
     }
 
     public function novoProduto(Request $request)
     {
-
         $novo = new StoreProducts();
         $novo->codigo_barra = $request->codigo_barra;
         $novo->name         = $request->name;
         $novo->save();
-
     }
-
-    public function listarEnderecos()
+    public function listarFiltros()
     {
-        return  StoreEndereco::with('user:id,name,email')->get();
+        return  StoreFilters::all();
     }
 
-    public function endereco(Request $request)
+    public function pesquisaFiltros(Request $request)
     {
-        $endereco = StoreEndereco::where('id','=',$request->idEndereco)->first();
-        return $endereco;
+        return StoreFilters::where('name', 'LIKE', '%'.$request->search.'%')->get();
     }
 
-    public function pesquisaEnderecos(Request $request)
-    {
-        $query = StoreEndereco::where('local', 'LIKE', '%'.$request->search.'%');
-
-        if($request->active){
-            $query->where('active', '=', $request->active);
-        }
-
-        return $query->with('user:id,name,email')->get();
-
-    }
-
-    public function destroyEnderecos(Request $request)
+    public function destroyFiltros(Request $request)
     {
         foreach ($request->list  as $item){
-            $active = StoreEndereco::find($item['id']);
-            $active->active = 2;
-            $active->save();
-        }
-    }
-
-    public function activeEnderecos(Request $request)
-    {
-        foreach ($request->list  as $item){
-            $active = StoreEndereco::find($item['id']);
-            $active->active = 1;
-            $active->save();
+            $active = StoreFilters::find($item['id']);
+            $active->forcedelete();
         }
     }
 
     public function consultaRapida(Request $request)
     {
-        //AMBIENTE DE TESTE
-        //NEW COMMIT
-        //return (new QuerySefaz())->queryProduto($request->search,1);
-
        return (new BuscarProduto())->init($request->search);
     }
 

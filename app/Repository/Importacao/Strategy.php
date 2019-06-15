@@ -27,8 +27,8 @@ abstract class Strategy
     public function __construct()
     {
         StoreConsultas::truncate();
-        //StoreProducts::truncate();
-        //StoreEndereco::truncate();
+        StoreEndereco::truncate();
+        StoreProducts::truncate();
     }
 
     abstract public function execute();

@@ -2,18 +2,20 @@
 
 namespace App\Repository\Importacao;
 
-use App\Repository\QuerySefaz;
+use App\Models\StoreFilters;
+use App\Repository\ImportacaoQuerySefaz;
 use App\Repository\Strategy;
 use Illuminate\Support\Facades\Storage;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class ImportarExcelProdutos extends Strategy
 {
-    private $spreadsheet, $fullPath;
+    private $spreadsheet, $fullPath, $filters;
 
     public function __construct($fullPath)
     {
         $this->fullPath  = $fullPath;
+        $this->filters = StoreFilters::all();
         parent::__construct();
     }
 
@@ -41,7 +43,12 @@ class ImportarExcelProdutos extends Strategy
 
         foreach($this->spreadsheet as $dados)
         {
-            $rows = (new QuerySefaz())->queryProduto($dados['B'],1);
+            $rows = (new ImportacaoQuerySefaz())
+                ->setCodigoBarra($dados['B'])
+                ->setFiltros($this->filters)
+                ->setPage(1)
+                ->execute();
+
             if($rows){
                 try{
                     foreach ($rows as $item){

@@ -6,12 +6,31 @@ namespace App\Repository;
 use DOMDocument;
 use DOMXPath;
 
-class QuerySefaz
+class ImportacaoQuerySefaz
 {
 
     public $totalPages = 1;
+    private $filtros;
     private $codigoBarra;
     private $page;
+
+    /**
+     * @return mixed
+     */
+    public function getFiltros()
+    {
+        return $this->filtros;
+    }
+
+    /**
+     * @param mixed $filtros
+     * @return ImportacaoQuerySefaz
+     */
+    public function setFiltros($filtros)
+    {
+        $this->filtros = $filtros;
+        return $this;
+    }
 
     /**
      * @return mixed
@@ -23,7 +42,7 @@ class QuerySefaz
 
     /**
      * @param mixed $codigoBarra
-     * @return QuerySefaz
+     * @return ImportacaoQuerySefaz
      */
     public function setCodigoBarra($codigoBarra)
     {
@@ -41,7 +60,7 @@ class QuerySefaz
 
     /**
      * @param mixed $page
-     * @return QuerySefaz
+     * @return ImportacaoQuerySefaz
      */
     public function setPage($page)
     {
@@ -49,8 +68,9 @@ class QuerySefaz
         return $this;
     }
 
-    public function execute()
-    {
+
+    public function execute(){
+
         $ch = new DefaultCurl();
         $ch =  $ch->connect("https://buscapreco.sefaz.am.gov.br/item/grupo/page/".$this->getPage());
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -70,68 +90,7 @@ class QuerySefaz
         $header = substr($output, 0, $header_size);
         curl_close($ch);
 
-        $this->getPages($output);
-
-        return $this->produtos($output);
-    }
-
-    private function ultimaCompra($content)
-    {
-        $html_dom = new DOMDocument();
-        @$html_dom->loadHTML($content);
-        $divs = $html_dom->getElementsByTagName('p');
-        $data = [];
-        $count = 0;
-        foreach ( $divs as $key => $div)
-        {
-            $attr = $div->getAttribute('class');
-
-            if ($attr == 'tb-valor-10') {
-                foreach (preg_split("/((\r?\n)|(\r\n?))/", $div->textContent) as $line)
-                {
-
-                    if (trim($line) == "") {
-                        continue;
-                    }
-
-                    if (strpos(trim($line), "location_on") !== false) {
-                        continue;
-                    }
-
-                    $data[] = trim($line);
-                }
-                $count++;
-            }
-        }
-        return $data;
-
-    }
-
-    private function getPages($content)
-    {
-        $html_dom = new DOMDocument();
-        @$html_dom->loadHTML($content);
-        $divs = $html_dom->getElementsByTagName('ul');
-
-        foreach ( $divs as $key => $div) {
-            $attr = $div->getAttribute('class');
-            if ($attr == 'pagination') {
-                foreach (preg_split("/((\r?\n)|(\r\n?))/", $div->textContent) as $line) {
-                    if (trim($line) == "") {
-                        continue;
-                    }
-
-                    if(trim($line) == "chevron_right"){
-                        continue;
-                    }
-                    if(trim($line) == "fast_forward"){
-                        continue;
-                    }
-                    $this->totalPages = trim($line);
-
-                }
-            }
-        }
+        return $this->produtos($output, $this->getCodigoBarra());
     }
 
     private function generateKey($length) {
@@ -144,18 +103,22 @@ class QuerySefaz
         return $randomString;
     }
 
-    private function produtos($content)
+    private function produtos($content, $codigoProduto)
     {
         $produto = $this->produtoName($content);
 
         $html_dom = new DOMDocument();
         @$html_dom->loadHTML($content);
         $divs = $html_dom->getElementsByTagName('div');
-        $matriz = [];
         $data = [];
         $count = 0;
         foreach ( $divs as $key => $div){
             $attr = $div->getAttribute('class');
+
+            if (!$this->filtros($div->textContent))
+            {
+                continue;
+            }
 
             if($attr == 'card-content'){
                 foreach(preg_split("/((\r?\n)|(\r\n?))/", $div->textContent) as $line)
@@ -171,7 +134,7 @@ class QuerySefaz
 
                 }
                 array_push($data[$count],$produto);
-                array_push($data[$count],$this->getCodigoBarra());
+                array_push($data[$count],$codigoProduto);
 
                 $count++;
 
@@ -189,6 +152,11 @@ class QuerySefaz
         $divs = $html_dom->getElementsByTagName('div');;
         foreach ( $divs as $key => $div){
             $attr = $div->getAttribute('class');
+
+            if (!$this->filtros($div->textContent))
+            {
+                continue;
+            }
 
             if($attr == 'modal-content'){
                 foreach(preg_split("/((\r?\n)|(\r\n?))/", $div->textContent) as $index => $line)
@@ -209,6 +177,18 @@ class QuerySefaz
             }
 
         }
+    }
+
+    private function filtros($context) : bool
+    {
+        foreach ($this->getFiltros() as $filtro)
+        {
+            if (strpos($context, $filtro->name) !== false)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static function findDomHtml($content,$attr, $prop )

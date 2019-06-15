@@ -32,14 +32,14 @@ Route::group(['prefix'    => '/' ],
                 Route::post('/importar', 'HomeController@importar');
                 Route::post('/consulta-rapida', 'HomeController@consultaRapida');
                 Route::post('/download-planilha-padrao', 'HomeController@download');
-                Route::post('/download-consultas', 'HomeController@downloadConsultas');
-                Route::post('/novo-produto', 'HomeController@novoProduto');
-                Route::post('/pesquisa-enderecos', 'HomeController@pesquisaEnderecos');
-                Route::post('/endereco', 'HomeController@endereco');
-                Route::post('/listar-enderecos', 'HomeController@listarEnderecos');
-                Route::post('/destroy-enderecos', 'HomeController@destroyEnderecos');
-                Route::post('/active-enderecos', 'HomeController@activeEnderecos');
+                Route::post('/gerar-download', 'HomeController@gerarDwonload');
+                Route::post('/consulta-download', 'HomeController@downloadConsultas');
+                Route::post('/download-listar', 'HomeController@downloads');
+                Route::post('/filtros', 'HomeController@filtros');
                 Route::post('/listar-produtos', 'HomeController@listarConsultas');
+                Route::post('/pesquisa-filtros', 'HomeController@pesquisaFiltros');
+                Route::post('/listar-filtros', 'HomeController@listarFiltros');
+                Route::post('/destroy-filtros', 'HomeController@destroyFiltros');
             });
 
 

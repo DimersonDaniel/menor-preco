@@ -15,10 +15,8 @@ class ProdutosManagerFilters
     public function __construct($request)
     {
         $this->request = $request;
-        $this->endereco = StoreEndereco::where('active','=',1)->get();
-        $this->consulta = StoreConsultas::select(['id','id_endereco','id_produto','valor'])
-      //  ->whereIn('id_endereco',$this->endereco->pluck('id'))
-            ->get();
+        $this->endereco = StoreEndereco::all();
+        $this->consulta = StoreConsultas::select(['id','id_endereco','id_produto','valor'])->get();
     }
 
     public function listar()

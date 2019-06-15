@@ -1,33 +1,29 @@
 <?php
 
-use App\Models\StoreConsultas;
+use App\Models\StoreFilters;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStoreConsultasTable extends Migration
+class CreateStoreFiltersTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
+
     private $table;
     public function __construct()
     {
-        $this->table   = (new StoreConsultas())->getTable();
+        $this->table   = (new StoreFilters())->getTable();
     }
 
     public function up()
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_user');
-            $table->integer('id_produto')->index('id_produto');
-            $table->integer('id_endereco')->index('id_endereco');
-            $table->decimal('valor',10,2)->nullable();
-            $table->date('dateEntrada')->nullable();
-            $table->string('horaEntrada')->nullable();
+            $table->string('name')->unique();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -38,7 +34,6 @@ class CreateStoreConsultasTable extends Migration
      *
      * @return void
      */
-
     public function down()
     {
         Schema::dropIfExists($this->table);
