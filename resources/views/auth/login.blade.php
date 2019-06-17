@@ -5,7 +5,7 @@
     <div class="row justify-content-center" style="margin-top: 50px;">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Menor preço') }}</div>
+                <div class="card-header">{{ __('Consulta preço') }}</div>
 
                 <div class="card-body">
 
