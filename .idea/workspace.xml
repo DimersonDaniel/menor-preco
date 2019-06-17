@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5bad9c9f-687a-4ad2-a053-1f20081530c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/JobsRegistro.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/JobsSituacao.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_06_15_151443_create_jobs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_06_15_154702_create_jobs_situacaos_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_06_17_131039_create_jobs_queues_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exports/ConsultasCSV.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exports/ConsultasCSV.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/ImportacaoProcess.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/ImportacaoProcess.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/StoreFile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/JobsQueue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Importacao/ImportarExcelProdutos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Importacao/ImportarExcelProdutos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Importacao/Strategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Importacao/Strategy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_14_195249_create_store_files_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_06_15_154423_create_jobs_registro_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app-vue/static/js/chunk-vendors.4e7eec46.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app-vue/static/js/chunk-vendors.4e7eec46.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/.gitignore" beforeDir="false" />
-    </list>
+    <list default="true" id="5bad9c9f-687a-4ad2-a053-1f20081530c6" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -390,7 +371,7 @@
       <workItem from="1560428176860" duration="141000" />
       <workItem from="1560518322856" duration="21867000" />
       <workItem from="1560600439576" duration="7790000" />
-      <workItem from="1560773457718" duration="15748000" />
+      <workItem from="1560773457718" duration="15819000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <created>1560269338820</created>
@@ -420,11 +401,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560612785387</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="implementações">
+      <created>1560796507716</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1560796507716</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193020000" />
+    <option name="totallyTimeSpent" value="193091000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
