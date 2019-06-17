@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\StoreFile;
+use App\Models\JobsRegistro;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStoreFilesTable extends Migration
+class CreateJobsRegistroTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,19 +16,18 @@ class CreateStoreFilesTable extends Migration
     private $table;
     public function __construct()
     {
-        $this->table   = (new StoreFile())->getTable();
+        $this->table   = (new JobsRegistro())->getTable();
     }
+
 
     public function up()
     {
-        Schema::create($this->table , function (Blueprint $table) {
+        Schema::create($this->table, function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('file_name')->nullable();
-            $table->string('file_path')->nullable();
-            $table->string('descricao')->nullable();
-            $table->timestamp('data')->nullable();
+            $table->integer('id_situacao');
+            $table->integer('id_queue');
+            $table->string('name');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -37,8 +36,9 @@ class CreateStoreFilesTable extends Migration
      *
      * @return void
      */
+
     public function down()
     {
-        Schema::dropIfExists($this->table );
+        Schema::dropIfExists($this->table);
     }
 }

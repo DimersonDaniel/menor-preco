@@ -2,27 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bad9c9f-687a-4ad2-a053-1f20081530c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Exports/ConsultasCSV.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Helpers/StatusResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Filtros.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Importacao.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Jobs/ImportacaoProcess.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/StoreFile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/StoreFilters.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/Importacao/ImportacaoQuerySefaz.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_06_14_155523_create_store_filters_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_06_14_195249_create_store_files_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/JobsRegistro.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/JobsSituacao.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_06_15_151443_create_jobs_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_06_15_154702_create_jobs_situacaos_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_06_17_131039_create_jobs_queues_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exports/ConsultasCSV.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exports/ConsultasCSV.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/Importacao.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/ConsultaRapida/BuscarProduto.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/ConsultaRapida/BuscarProduto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/ImportacaoProcess.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/ImportacaoProcess.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/StoreFile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/JobsQueue.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repository/Importacao/ImportarExcelProdutos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Importacao/ImportarExcelProdutos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Importacao/QuerySefaz.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Importacao/QuerySefaz.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repository/Importacao/Strategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Importacao/Strategy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/ListarProdutos/ProdutosManagerFilters.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/ListarProdutos/ProdutosManagerFilters.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_06_134514_create_store_consultas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_06_06_134514_create_store_consultas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_14_195249_create_store_files_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_06_15_154423_create_jobs_registro_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/app-vue/static/js/chunk-vendors.4e7eec46.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/app-vue/static/js/chunk-vendors.4e7eec46.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/.gitignore" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,35 +33,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="57" column="43" lean-forward="true" selection-start-line="57" selection-start-column="43" selection-end-line="57" selection-end-column="43" />
+            <state relative-caret-position="159">
+              <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
               <folding>
-                <element signature="e#40#69#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Jobs/ImportacaoProcess.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-              <folding>
-                <element signature="e#28#57#0#PHP" expanded="true" />
+                <element signature="e#40#72#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/queue.php">
+        <entry file="file://$PROJECT_DIR$/app/Models/JobsQueue.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+            <state relative-caret-position="170">
+              <caret line="10" column="24" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Jobs/ImportacaoProcess.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="410">
+              <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
+              <folding>
+                <element signature="e#28#80#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Repository/Importacao/ImportarExcelProdutos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1377">
+              <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
+              <folding>
+                <element signature="e#45#74#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,15 +101,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
-        <option value="$PROJECT_DIR$/database/factories/UserFactory.php" />
-        <option value="$PROJECT_DIR$/config/auth.php" />
-        <option value="$PROJECT_DIR$/config/services.php" />
-        <option value="$PROJECT_DIR$/app/Models/Jobs.php" />
-        <option value="$PROJECT_DIR$/app/Models/WorkingProcess.php" />
-        <option value="$PROJECT_DIR$/app/Models/JobsSituacao.php" />
-        <option value="$PROJECT_DIR$/app/Models/JobsTipo.php" />
-        <option value="$PROJECT_DIR$/app/Console/Commands/ConsultarNaSefaz.php" />
         <option value="$PROJECT_DIR$/app/Models/Configuracao.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_06_131226_create_store_addresses_table.php" />
         <option value="$PROJECT_DIR$/app/Models/StoreAddress.php" />
@@ -127,22 +127,31 @@
         <option value="$PROJECT_DIR$/app/Repository/Importacao/QuerySefaz.php" />
         <option value="$PROJECT_DIR$/app/Models/StoreFilters.php" />
         <option value="$PROJECT_DIR$/app/Repository/ConsultaRapida/BuscarProduto.php" />
-        <option value="$PROJECT_DIR$/app/Repository/Importacao/ImportarExcelProdutos.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_14_155523_create_store_filters_table.php" />
         <option value="$PROJECT_DIR$/app/Repository/Importacao/ImportacaoQuerySefaz.php" />
         <option value="$PROJECT_DIR$/app/Repository/ListarProdutos/ProdutosManagerFilters.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_14_195249_create_store_files_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_06_134514_create_store_consultas_table.php" />
         <option value="$PROJECT_DIR$/app/Models/StoreFile.php" />
         <option value="$PROJECT_DIR$/app/Helpers/StatusResponse.php" />
-        <option value="$PROJECT_DIR$/app/Exports/ConsultasCSV.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/Importacao.php" />
-        <option value="$PROJECT_DIR$/app/Repository/Importacao/Strategy.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/Filtros.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/config/queue.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/app/Models/JobsProcess.php" />
+        <option value="$PROJECT_DIR$/app/Models/JobsSituacao.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_15_154423_create_jobs_processes_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_15_154423_create_jobs_registro_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_17_131039_create_jobs_queues_table.php" />
+        <option value="$PROJECT_DIR$/app/Models/JobsQueue.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Models/JobsRegistro.php" />
+        <option value="$PROJECT_DIR$/app/Repository/Importacao/Strategy.php" />
         <option value="$PROJECT_DIR$/app/Jobs/ImportacaoProcess.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_15_154702_create_jobs_situacaos_table.php" />
+        <option value="$PROJECT_DIR$/app/Exports/ConsultasCSV.php" />
+        <option value="$PROJECT_DIR$/app/Repository/Importacao/ImportarExcelProdutos.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
       </list>
     </option>
   </component>
@@ -236,8 +245,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="139" />
+    <option name="y" value="-25" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
@@ -246,6 +255,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -275,42 +285,36 @@
               <item name="menor-preco" type="b2602c69:ProjectViewProjectNode" />
               <item name="menor-preco" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="menor-preco" type="b2602c69:ProjectViewProjectNode" />
+              <item name="menor-preco" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="menor-preco" type="b2602c69:ProjectViewProjectNode" />
+              <item name="menor-preco" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Jobs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="menor-preco" type="b2602c69:ProjectViewProjectNode" />
               <item name="menor-preco" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="menor-preco" type="b2602c69:ProjectViewProjectNode" />
               <item name="menor-preco" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-              <item name="Importacao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="menor-preco" type="b2602c69:ProjectViewProjectNode" />
-              <item name="menor-preco" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="menor-preco" type="b2602c69:ProjectViewProjectNode" />
-              <item name="menor-preco" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="menor-preco" type="b2602c69:ProjectViewProjectNode" />
-              <item name="menor-preco" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -323,19 +327,19 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\menor-preco\app\Models" />
-      <recent name="C:\xampp\htdocs\consulta-preco\public\imagens" />
-      <recent name="C:\xampp\htdocs\consulta-preco\app\Models" />
-      <recent name="C:\xampp\htdocs\consulta-preco\app\Model" />
-      <recent name="C:\xampp\htdocs\consulta-preco\app" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\menor-preco\app" />
       <recent name="C:\xampp\htdocs\menor-preco\app\Models" />
       <recent name="C:\xampp\htdocs\menor-preco\app\Repository\Importacao" />
       <recent name="C:\xampp\htdocs\consulta-preco\app\Console\Commands" />
       <recent name="C:\xampp\htdocs\consulta-preco\app\Exports" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\menor-preco\app\Models" />
+      <recent name="C:\xampp\htdocs\consulta-preco\public\imagens" />
+      <recent name="C:\xampp\htdocs\consulta-preco\app\Models" />
+      <recent name="C:\xampp\htdocs\consulta-preco\app\Model" />
+      <recent name="C:\xampp\htdocs\consulta-preco\app" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -385,7 +389,8 @@
       <workItem from="1560341264171" duration="8564000" />
       <workItem from="1560428176860" duration="141000" />
       <workItem from="1560518322856" duration="21867000" />
-      <workItem from="1560600439576" duration="6668000" />
+      <workItem from="1560600439576" duration="7790000" />
+      <workItem from="1560773457718" duration="15748000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <created>1560269338820</created>
@@ -408,17 +413,24 @@
       <option name="project" value="LOCAL" />
       <updated>1560518478693</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="implementações">
+      <created>1560612785387</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1560612785387</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176150000" />
+    <option name="totallyTimeSpent" value="193020000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2647504" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2685325" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -430,7 +442,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3289689" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.30605564" />
@@ -447,62 +459,10 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="start" />
-    <option name="LAST_COMMIT_MESSAGE" value="start" />
+    <MESSAGE value="implementações" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementações" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Facades/Artisan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="70" column="67" selection-start-line="70" selection-start-column="67" selection-end-line="70" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/verify.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-862" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="36" column="50" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -559,19 +519,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repository/Importacao/ProdutosConsultas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-816">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding>
-            <element signature="e#47#76#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-06-14.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-06-14.log" />
     <entry file="file://$PROJECT_DIR$/app/Models/StoreFilters.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -643,34 +591,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_14_195249_create_store_files_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="28" column="35" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="35" />
-          <folding>
-            <element signature="e#7#32#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/StoreFile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-          <folding>
-            <element signature="e#30#69#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Jobs/Importacao.php" />
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="35" column="38" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Exports/Produtos.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -685,38 +606,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/StoreEndereco.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="25" />
-          <folding>
-            <element signature="e#30#69#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/storage/app/download/555d6162-53b4-4871-b5ee-9c59ea827fb2.csv">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Exports/ConsultasCSV.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="e#33#63#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repository/Importacao/ImportacaoQuerySefaz.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="158" column="13" selection-start-line="155" selection-start-column="11" selection-end-line="158" selection-end-column="13" />
-          <folding>
-            <element signature="e#35#51#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Repository/Importacao/QuerySefaz.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -724,16 +615,6 @@
           <caret line="129" column="51" selection-start-line="129" selection-start-column="51" selection-end-line="129" selection-end-column="51" />
           <folding>
             <element signature="e#35#51#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repository/Importacao/Strategy.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-          <folding>
-            <element signature="e#117#146#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -788,22 +669,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repository/Importacao/ImportarExcelProdutos.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/JobsSituacao.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        <state relative-caret-position="204">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/StoreEndereco.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="27" column="30" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="30" />
           <folding>
-            <element signature="e#45#73#0#PHP" expanded="true" />
+            <element signature="e#30#69#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_15_151443_create_jobs_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="57" column="43" lean-forward="true" selection-start-line="57" selection-start-column="43" selection-end-line="57" selection-end-column="43" />
+        <state relative-caret-position="68">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_15_154423_create_jobs_registro_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
           <folding>
-            <element signature="e#40#69#0#PHP" expanded="true" />
+            <element signature="e#7#35#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_17_131039_create_jobs_queues_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+          <folding>
+            <element signature="e#7#32#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -811,19 +716,144 @@
     <entry file="file://$PROJECT_DIR$/app/Console/Commands/ConsultarPreco.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="433">
-          <caret line="44" column="60" lean-forward="true" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="60" />
+          <caret line="44" column="60" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="60" />
           <folding>
             <element signature="e#40#92#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/JobsRegistro.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="32" column="43" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repository/Importacao/ProdutosConsultas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-173">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding>
+            <element signature="e#47#76#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repository/Importacao/Strategy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-202">
+          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+          <folding>
+            <element signature="e#117#147#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repository/Importacao/ImportacaoQuerySefaz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2312">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+          <folding>
+            <element signature="e#35#51#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-06-17.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Exports/ConsultasCSV.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="91" column="34" lean-forward="true" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
+          <folding>
+            <element signature="e#33#58#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repository/Importacao/ImportarExcelProdutos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
+          <folding>
+            <element signature="e#45#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Jobs/ImportacaoProcess.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        <state relative-caret-position="410">
+          <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
           <folding>
-            <element signature="e#28#57#0#PHP" expanded="true" />
+            <element signature="e#28#80#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_15_154702_create_jobs_situacaos_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="33" column="47" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+          <folding>
+            <element signature="e#7#35#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_14_195249_create_store_files_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+          <folding>
+            <element signature="e#7#32#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/StoreFile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+          <folding>
+            <element signature="e#30#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/JobsQueue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+          <folding>
+            <element signature="e#40#72#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

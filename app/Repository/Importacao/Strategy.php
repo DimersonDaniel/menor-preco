@@ -8,11 +8,10 @@
 
 namespace App\Repository;
 
-use App\Models\StoreEndereco;
 use App\Models\StoreConsultas;
+use App\Models\StoreEndereco;
 use App\Models\StoreProducts;
 use App\Repository\Importacao\ProdutosConsultas;
-use Illuminate\Support\Facades\Auth;
 
 abstract class Strategy
 {
@@ -21,6 +20,7 @@ abstract class Strategy
     public $error;
     public $dtNow;
     public $hrNow;
+    public $user_id;
     /** @var $svConsulta ProdutosConsultas */
     public $svConsulta;
 
@@ -41,8 +41,9 @@ abstract class Strategy
 
     private function insertConsulta()
     {
+
         $newConsulta = new StoreConsultas();
-        $newConsulta->id_user       = Auth::user()->id;
+        $newConsulta->id_user       = $this->user_id;
         $newConsulta->id_produto    = $this->svConsulta->getIdProduto();
         $newConsulta->id_endereco   = $this->svConsulta->getIdLocal();
         $newConsulta->valor         = $this->svConsulta->getValor();

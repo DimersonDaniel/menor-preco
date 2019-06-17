@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\ConsultasCSV;
 use App\Exports\PlanilhaExemplo;
 use App\Helpers\StatusResponse;
 use App\Http\Requests\Filtros;
 use App\Http\Requests\Importacao;
 use App\Jobs\ImportacaoProcess;
+use App\Models\JobsQueue;
+use App\Models\JobsRegistro;
 use App\Models\StoreFile;
 use App\Models\StoreFilters;
 use App\Models\StoreProducts;
 use App\Repository\ConsultaRapida\BuscarProduto;
 use App\Repository\ListarProdutos\ProdutosManagerFilters;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -53,12 +54,21 @@ class HomeController extends Controller
         }
 
         $fileRequest    = $request->file('fileUpload');
+        $fileName       = $fileRequest->getClientOriginalName();
         $path           = $fileRequest->store('filesForProcess');
 
-        ImportacaoProcess::dispatch($path);
+        $this->dispatch( new ImportacaoProcess($path, $fileName, Auth::user()->id) );
 
         return 'sucesso';
 
+    }
+
+    public function listarRegistros(Request $request){
+
+        $registros = JobsRegistro::with(['queue','situacao'])
+            ->orderBy('id', 'desc')
+            ->get();
+        return $registros;
     }
 
     public function download(Request $request)
@@ -68,26 +78,15 @@ class HomeController extends Controller
 
     public function downloads()
     {
-        $data = StoreFile::select(
-            [
-                'id',
-                'file_name',
-                'descricao',
-                'created_at'
-            ])->orderBy('id', 'desc')
+        $registros = JobsRegistro::with(['queue','situacao'])
+            ->orderBy('id', 'desc')
             ->get();
-
-        return $data;
-    }
-
-    public function gerarDwonload(Request $request)
-    {
-        (new ConsultasCSV())->init();
+        return $registros;
     }
 
     public function downloadConsultas(Request $request){
-        $path = StoreFile::find($request->idFile);
-        return Storage::download($path->file_path);
+        $path = JobsQueue::find($request->idFile);
+        return Storage::download($path->path);
     }
 
     public function filtros(Filtros $request){

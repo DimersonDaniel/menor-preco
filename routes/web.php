@@ -30,6 +30,7 @@ Route::group(['prefix'    => '/' ],
             function ()
             {
                 Route::post('/importar', 'HomeController@importar');
+                Route::post('/listar-queues', 'HomeController@listarRegistros');
                 Route::post('/consulta-rapida', 'HomeController@consultaRapida');
                 Route::post('/download-planilha-padrao', 'HomeController@download');
                 Route::post('/gerar-download', 'HomeController@gerarDwonload');

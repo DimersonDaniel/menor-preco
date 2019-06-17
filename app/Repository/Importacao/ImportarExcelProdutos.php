@@ -2,6 +2,9 @@
 
 namespace App\Repository\Importacao;
 
+use App\Exports\ConsultasCSV;
+use App\Models\JobsQueue;
+use App\Models\JobsRegistro;
 use App\Models\StoreFilters;
 use App\Repository\ImportacaoQuerySefaz;
 use App\Repository\Strategy;
@@ -10,37 +13,48 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class ImportarExcelProdutos extends Strategy
 {
-    private $spreadsheet, $fullPath, $filters;
+    private $spreadsheet, $fullPath, $filters, $idqueue, $idResgistroQueue, $fileName, $id_user;
 
-    public function __construct($fullPath)
+    public function __construct($fullPath, $fileName, $id_user)
     {
-        $this->fullPath  = $fullPath;
-        $this->filters = StoreFilters::all();
+        $this->fullPath     = $fullPath;
+        $this->fileName      = $fileName;
+        $this->id_user      = $id_user;
+        $this->filters      = StoreFilters::all();
         parent::__construct();
     }
 
     public function execute()
     {
-        $storage = Storage::disk('local');
-        $filePath = $storage->path($this->fullPath);
+       $this->startQueue();
 
-        if (!$storage->exists($this->fullPath))
-        {
-            throw new \Exception($this->fullPath.' -> Arquivo não encontrato!');
+        try{
+            $storage = Storage::disk('local');
+            $filePath = $storage->path($this->fullPath);
+
+            if (!$storage->exists($this->fullPath))
+            {
+                throw new \Exception($this->fullPath.' -> Arquivo não encontrato!');
+            }
+
+            $spreadsheet = IOFactory::load($filePath);
+            $this->spreadsheet = $spreadsheet->getActiveSheet()->toArray(null,true,true,true);
+
+            unset($this->spreadsheet[1]);
+            $this->start();
+        }catch (\Exception $e){
+            logger('ImportarExcelProdutos.php');
+            logger($e->getTraceAsString());
+            $this->faillqueue();
         }
 
-        $spreadsheet = IOFactory::load($filePath);
-        $this->spreadsheet = $spreadsheet->getActiveSheet()->toArray(null,true,true,true);
-
-        unset($this->spreadsheet[1]);
-        $this->start();
     }
 
     private function start(){
 
         $this->dtNow = date('Y-m-d');
         $this->hrNow = date('H:i:s');
-
+        $this->user_id = $this->id_user;
         foreach($this->spreadsheet as $dados)
         {
             $rows = (new ImportacaoQuerySefaz())
@@ -66,10 +80,48 @@ class ImportarExcelProdutos extends Strategy
                     continue;
 
                 }
-
             }
         }
 
-        return '';
+        (new ConsultasCSV())
+            ->setIdQueue($this->idqueue)
+            ->init();
+
+        $this->finishQueue();
+
+    }
+
+    private function startQueue()
+    {
+        $jobs = new JobsQueue();
+        $jobs->file_name = $this->fileName;
+        $jobs->descricao = 'importacao';
+        $jobs->path      =  '';
+        $jobs->data      =  date('Y-m-d');
+        $jobs->save();
+
+        $this->idqueue = $jobs->id;
+
+        $registro = new JobsRegistro();
+        $registro->id_queue     =  $this->idqueue;
+        $registro->id_situacao  =  1;
+        $registro->name         =  'importacao-preco';
+        $registro->save();
+
+        $this->idResgistroQueue = $registro->id;
+    }
+
+    private function finishQueue()
+     {
+         $registro = JobsRegistro::find($this->idResgistroQueue);
+         $registro->id_situacao  =  2;
+         $registro->save();
+     }
+
+    private function faillqueue()
+    {
+        $registro = JobsRegistro::find($this->idResgistroQueue);
+        $registro->id_situacao  =  3;
+        $registro->save();
     }
 }

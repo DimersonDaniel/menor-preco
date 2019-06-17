@@ -2,12 +2,12 @@
 
 namespace App\Jobs;
 
+use App\Repository\Importacao\ImportarExcelProdutos;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 class ImportacaoProcess implements ShouldQueue
 {
@@ -20,9 +20,14 @@ class ImportacaoProcess implements ShouldQueue
      */
 
     private $path;
-    public function __construct($path)
+    private $fileName;
+    private $id_user;
+
+    public function __construct($path, $fileName,$id_user)
     {
         $this->path = $path;
+        $this->fileName = $fileName;
+        $this->id_user = $id_user;
     }
 
     /**
@@ -30,8 +35,9 @@ class ImportacaoProcess implements ShouldQueue
      *
      * @return void
      */
+
     public function handle()
     {
-        Artisan::call('consulta:preco', ['path' => $this->path]);
+        (new ImportarExcelProdutos($this->path, $this->fileName, $this->id_user))->execute();
     }
 }

@@ -4,10 +4,9 @@
 namespace App\Exports;
 
 
+use App\Models\JobsQueue;
 use App\Models\StoreConsultas;
 use App\Models\StoreEndereco;
-use App\Models\StoreFile;
-use App\Models\StoreFilters;
 use App\Models\StoreProducts;
 use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Uuid;
@@ -16,13 +15,30 @@ class ConsultasCSV
 {
     private $consulta;
     private $enderecos;
-    private $filters;
+    private $idQueue;
+
+    /**
+     * @return mixed
+     */
+    public function getIdQueue()
+    {
+        return $this->idQueue;
+    }
+
+    /**
+     * @param mixed $idQueue
+     * @return ConsultasCSV
+     */
+    public function setIdQueue($idQueue)
+    {
+        $this->idQueue = $idQueue;
+        return $this;
+    }
 
     public function __construct()
     {
         $this->enderecos = StoreEndereco::all();
-        $this->consulta = StoreConsultas::select(['id','id_endereco','id_produto','valor'])
-            ->whereIn('id_endereco',$this->enderecos->pluck('id'))->get();
+        $this->consulta = StoreConsultas::select(['id','id_endereco','id_produto','valor'])->get();
     }
     public function init()
     {
@@ -37,16 +53,12 @@ class ConsultasCSV
 
         foreach ($produtos as $produto)
         {
-
-            if($produto->id !== $this->filters){
-
-            }
             $rows .= $produto->codigo_barra . ";"
                 .rtrim($produto->name,PHP_EOL) .";";
 
             foreach ( $this->enderecos as $value)
             {
-                $rows .= $this->getValue($produto->id,$value->id) .";";
+                $rows .= $this->getValue($produto->id, $value->id) .";";
             }
             $rows .= PHP_EOL;
         }
@@ -74,12 +86,12 @@ class ConsultasCSV
 
     private function savePath($path, $fileName){
 
-        $savePathFile = new StoreFile();
-        $savePathFile->file_name = $fileName.'.csv';
-        $savePathFile->file_path = $path;
-        $savePathFile->descricao = 'DOWNLOAD - IMPORTACAO';
-        $savePathFile->data = date('Y-m-d');
-        $savePathFile->save();
+        logger('update => '.  $this->getIdQueue());
+
+        $jobs = JobsQueue::find($this->getIdQueue());
+        $jobs->path      =  $path;
+        $jobs->save();
+
     }
 
 }
