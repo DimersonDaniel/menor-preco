@@ -9,7 +9,6 @@ use App\Http\Requests\Importacao;
 use App\Jobs\ImportacaoProcess;
 use App\Models\JobsQueue;
 use App\Models\JobsRegistro;
-use App\Models\StoreFile;
 use App\Models\StoreFilters;
 use App\Models\StoreProducts;
 use App\Repository\ConsultaRapida\BuscarProduto;
