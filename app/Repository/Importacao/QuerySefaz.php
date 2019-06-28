@@ -63,7 +63,13 @@ class QuerySefaz
             'Cookie: _ga=GA1.4.1671029631.1557320452; _gid=GA1.4.1137086119.1558361567; _gat=1; JSESSIONID='. $this->generateKey(32),
         ));
         curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,  'termoCdGtin='.$this->getCodigoBarra().'&descricaoProd='.$this->getCodigoBarra().'&action=');
+        curl_setopt($ch, CURLOPT_POSTFIELDS,  'cdGtin='.$this->getCodigoBarra().
+            '&descricaoProd='.$this->getCodigoBarra().
+            '&_consultaExata=on'.
+            '&tipoConsulta=168'.
+            '&distancia=9999'.
+            '&municipio=Manaus'
+        );
         curl_setopt($ch, CURLOPT_POST, 1);
         $output = curl_exec($ch);
         $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
@@ -72,8 +78,11 @@ class QuerySefaz
 
         $this->getPages($output);
 
-        return $this->produtos($output);
+        $proutos = $this->produtos($output);
+
+        return $proutos;
     }
+
 
     private function ultimaCompra($content)
     {
@@ -97,7 +106,6 @@ class QuerySefaz
                     if (strpos(trim($line), "location_on") !== false) {
                         continue;
                     }
-
                     $data[] = trim($line);
                 }
                 $count++;
@@ -151,10 +159,11 @@ class QuerySefaz
         $html_dom = new DOMDocument();
         @$html_dom->loadHTML($content);
         $divs = $html_dom->getElementsByTagName('div');
-        $matriz = [];
         $data = [];
         $count = 0;
+
         foreach ( $divs as $key => $div){
+
             $attr = $div->getAttribute('class');
 
             if($attr == 'card-content'){

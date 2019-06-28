@@ -17,5 +17,10 @@ class StoreFilters extends Model
     use SoftDeletes;
     protected $table = 'store__filters';
 
+    protected $casts = [
+        'created_at' => 'datetime:d/m/Y H:i:s',
+        'updated_at' => 'datetime:d/m/Y H:i:s',
+    ];
+
     public $timestamps = true;
 }

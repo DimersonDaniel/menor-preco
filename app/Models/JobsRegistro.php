@@ -17,6 +17,11 @@ class JobsRegistro extends Model
     protected $table = 'jobs__registro';
     public $timestamps = true;
 
+    protected $casts = [
+        'created_at' => 'datetime:d/m/Y H:i:s',
+        'updated_at' => 'datetime:d/m/Y H:i:s',
+    ];
+
     public function situacao(){
         return $this->hasOne(JobsSituacao::class,'id','id_situacao');
     }

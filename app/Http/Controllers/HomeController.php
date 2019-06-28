@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\PlanilhaExemplo;
 use App\Helpers\StatusResponse;
+use App\Http\Requests\ConsultasFormRequest;
 use App\Http\Requests\Filtros;
 use App\Http\Requests\Importacao;
 use App\Jobs\ImportacaoProcess;
@@ -79,7 +80,7 @@ class HomeController extends Controller
     {
         $registros = JobsRegistro::with(['queue','situacao'])
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate(5);
         return $registros;
     }
 
@@ -119,9 +120,10 @@ class HomeController extends Controller
         }
     }
 
-    public function consultaRapida(Request $request)
+    public function consultaRapida(ConsultasFormRequest $request)
     {
-       return (new BuscarProduto())->init($request->search);
+        $data = (new BuscarProduto())->init($request->search);
+       return $data;
     }
 
     public function listarConsultas(Request $request)

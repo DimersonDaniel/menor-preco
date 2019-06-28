@@ -28,7 +28,7 @@ abstract class Strategy
     {
         StoreConsultas::truncate();
         StoreEndereco::truncate();
-        StoreProducts::truncate();
+       //StoreProducts::truncate();
     }
 
     abstract public function execute();
